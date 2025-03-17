@@ -1,5 +1,8 @@
 const { app, BrowserWindow} = require('electron');
 
+console.log('Hola mundo desde electron');
+
+/*
 app.whenReady().then(() => {
 
     // create a window
@@ -15,3 +18,4 @@ app.whenReady().then(() => {
     myWindow.loadFile('index.html');
 
 }).catch()
+*/
