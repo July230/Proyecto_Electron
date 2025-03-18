@@ -1,6 +1,7 @@
 const { app, BrowserWindow} = require('electron');
 // app, controla el ciclo de vida de la aplicacion
 // BrowserWindow, crea y administra ventanas de la app
+const { setMainMenu } = require('./menu');
 
 console.log('Hola mundo desde electron');
 
@@ -13,6 +14,8 @@ const createWindow = () => {
   
     win.loadFile('index.html')
 }
+
+setMainMenu()
 
   // cargar una pagina
     // es posible crear mas de un proceso
