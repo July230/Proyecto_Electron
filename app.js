@@ -26,6 +26,14 @@ const createWindow = () => {
     // es posible crear mas de un proceso
 app.whenReady().then(() => {
     createWindow()
+
+    // macOS apps generally continue running even without any windows open. 
+    // Because windows cannot be created before the ready event, 
+    // you should only listen for activate events after your app is initialized.
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
+
 }).catch((error) => console.log(error));
 
 /*
@@ -47,14 +55,3 @@ app.on('window-all-closed', () => {
     }
 })
 */
-
-// macOS apps generally continue running even without any windows open. 
-// Because windows cannot be created before the ready event, 
-// you should only listen for activate events after your app is initialized.
-app.whenReady().then(() => {
-    createWindow()
-  
-    app.on('activate', () => {
-      if (BrowserWindow.getAllWindows().length === 0) createWindow()
-    })
-}).catch((error) => console.log(error));

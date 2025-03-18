@@ -1,0 +1,13 @@
+:root {
+    --scheme: light dark; /* aceptamos tanto light como dark. utiliza el del sistema operativo */
+    color-scheme: var(--scheme); /* caston property, esta variable la vamos a cambiar */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100;
+    display: grid;
+    place-content: center;
+    font-family: system-ui;
+}

@@ -18,5 +18,9 @@ $button.addEventListener('click', () => {
 })
 
 window.electronAPI.onUpdateTheme((event, theme) => {
+    const root = document.documentElement
+
+    // le decimos cual es la caston property que queremos cambiar, la que esta en stye.css
+    root.style.setProperty('--scheme', theme)
     console.log(event, theme)
 })
