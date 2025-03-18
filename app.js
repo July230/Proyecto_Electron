@@ -4,18 +4,18 @@ const { app, BrowserWindow} = require('electron');
 
 console.log('Hola mundo desde electron');
 
+// create a window
+const createWindow = () => {
+    const win = new BrowserWindow({
+      width: 800,
+      height: 600
+    })
+  
+    win.loadFile('index.html')
+}
+
+  // load a webpage
+    // it's possible to create more than one process
 app.whenReady().then(() => {
-
-    // create a window
-    const myWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        }
-    });
-
-    // load a webpage
-    myWindow.loadFile('index.html');
-
+    createWindow()
 }).catch((error) => console.log(error));
