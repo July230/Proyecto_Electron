@@ -21,6 +21,24 @@ const setMainMenu = () => {
                 { type: 'separator' },
                 { role: 'quit' }
             ]
+        },
+        {
+
+            label: 'Themes',
+            submenu: [
+                {
+                    label: 'Claro',
+                    click: () => {
+                        console.log("Seleccionar modo claro");
+                    }
+                },
+                {
+                    label: 'Oscuro',
+                    click: () => {
+                        console.log("Seleccionar modo oscuro");
+                    }
+                }
+            ]
         }
     ]
 
