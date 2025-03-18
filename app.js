@@ -1,10 +1,10 @@
 const { app, BrowserWindow} = require('electron');
-// app, which controls your application's event lifecycle.
-// BrowserWindow, which creates and manages app windows.
+// app, controla el ciclo de vida de la aplicacion
+// BrowserWindow, crea y administra ventanas de la app
 
 console.log('Hola mundo desde electron');
 
-// create a window
+// crear una ventana
 const createWindow = () => {
     const win = new BrowserWindow({
       width: 800,
@@ -14,8 +14,8 @@ const createWindow = () => {
     win.loadFile('index.html')
 }
 
-  // load a webpage
-    // it's possible to create more than one process
+  // cargar una pagina
+    // es posible crear mas de un proceso
 app.whenReady().then(() => {
     createWindow()
 }).catch((error) => console.log(error));
@@ -26,14 +26,14 @@ To implement this pattern in your Electron app:
 */
 
 /*
-// there are plenty of events
+// Hay muchos eventos
 app.on('window-all-closed', () => {
     // darwin -> MacOS
     // win32 -> Windows
     // linux -> Linux
 
-    // exit app if the user is not on macOS (this is for windows and linux)
-    // app will continue running on macOS
+    // salir de la app si el usuario no es de macOS
+    // la app continuara corriendo en macOS
     if (process.platform != 'darwin') {
         app.quit() 
     }
