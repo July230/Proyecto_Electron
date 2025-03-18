@@ -12,6 +12,7 @@ const createWindow = () => {
       width: 800,
       height: 600,
       webPreferences: {
+        // precargar un archivo antes de cargar la app
         preload: path.join(__dirname, 'preload.js')
       }
     })

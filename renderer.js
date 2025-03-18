@@ -17,6 +17,7 @@ $button.addEventListener('click', () => {
     $count.innerHTML = (count + 1).toString;
 })
 
+// recibe el evento updateTheme y actualiza el estilo
 window.electronAPI.onUpdateTheme((event, theme) => {
     const root = document.documentElement
 
