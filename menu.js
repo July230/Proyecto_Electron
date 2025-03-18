@@ -3,7 +3,7 @@ const { app, Menu } = require('electron');
 
 // documentacion de menu https://www.electronjs.org/docs/latest/api/menu#class-menu
 
-const setMainMenu = () => {
+const setMainMenu = (mainWindow) => {
     // Un arreglo que tiene lo que queremos que se muestre
     // En el caso de mac, es el menu superior, a nivel de la manzanita
     const template = [
@@ -30,12 +30,14 @@ const setMainMenu = () => {
                     label: 'Claro',
                     click: () => {
                         console.log("Seleccionar modo claro");
+                        mainWindow.webContents.send('updateTheme', 'light')
                     }
                 },
                 {
                     label: 'Oscuro',
                     click: () => {
                         console.log("Seleccionar modo oscuro");
+                        mainWindow.webContents.send('updateTheme', 'dark')
                     }
                 }
             ]

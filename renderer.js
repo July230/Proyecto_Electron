@@ -16,3 +16,7 @@ $button.addEventListener('click', () => {
     const count = +$count.innerHTML;
     $count.innerHTML = (count + 1).toString;
 })
+
+window.electronAPI.onUpdateTheme((event, theme) => {
+    console.log(event, theme)
+})

@@ -2,20 +2,25 @@ const { app, BrowserWindow} = require('electron');
 // app, controla el ciclo de vida de la aplicacion
 // BrowserWindow, crea y administra ventanas de la app
 const { setMainMenu } = require('./menu');
+const path = require('path')
 
 console.log('Hola mundo desde electron');
 
 // crear una ventana
 const createWindow = () => {
-    const win = new BrowserWindow({
+    const mainWindow = new BrowserWindow({
       width: 800,
-      height: 600
+      height: 600,
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js')
+      }
     })
   
-    win.loadFile('index.html')
-}
+    mainWindow.loadFile('index.html')
 
-setMainMenu()
+    // al crear la ventana 
+    setMainMenu(mainWindow)
+}
 
   // cargar una pagina
     // es posible crear mas de un proceso
