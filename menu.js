@@ -28,7 +28,9 @@ const setMainMenu = (mainWindow) => {
                 {
                     label: 'Abrir archivo',
                     click: () => {
+                        // con dialog desplegamos el buscador de archivos nativo del sistema para abrir y guardar archivos, alertas, etc.
                         dialog.showOpenDialog(mainWindow, {
+                            // especificamos los tipos de extensiones que son mostradas o seleccionables
                             filters: [
                                 {
                                     name: 'Markdown',
@@ -36,9 +38,16 @@ const setMainMenu = (mainWindow) => {
                                 }
                             ],
                             title: 'Selecciona tu archivo markdown',
-                            defaultPath: '~/Desktop',
+                            defaultPath: '~/Desktop', // va a ir al escritorio
+                            // openFile permite seleccionar archivos
+                            // openDirectory permite seleccionar carpetas
                             properties: ['openFile', 'openDirectory']
-                        })
+                        }).then(result => { // devuelve una promersa
+                            console.log(result.canceled)
+                            console.log(result.filePaths)
+                          }).catch(err => {
+                            console.log(err)
+                          })
                     }
 
                 }
