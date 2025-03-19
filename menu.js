@@ -1,4 +1,4 @@
-const { app, Menu } = require('electron');
+const { app, Menu, dialog } = require('electron');
 
 
 // documentacion de menu https://www.electronjs.org/docs/latest/api/menu#class-menu
@@ -23,6 +23,28 @@ const setMainMenu = (mainWindow) => {
             ]
         },
         {
+            label: 'Edit',
+            submenu: [
+                {
+                    label: 'Abrir archivo',
+                    click: () => {
+                        dialog.showOpenDialog(mainWindow, {
+                            filters: [
+                                {
+                                    name: 'Markdown',
+                                    extensions: ['md'],
+                                }
+                            ],
+                            title: 'Selecciona tu archivo markdown',
+                            defaultPath: '~/Desktop',
+                            properties: ['openFile', 'openDirectory']
+                        })
+                    }
+
+                }
+            ]
+        },
+        {
 
             label: 'Themes',
             submenu: [
@@ -30,6 +52,7 @@ const setMainMenu = (mainWindow) => {
                     label: 'Claro',
                     click: () => {
                         console.log("Seleccionar modo claro");
+                        // a la ventana principal le enviamos el evento llamado updateTheme y el valor light
                         mainWindow.webContents.send('updateTheme', 'light')
                     }
                 },
