@@ -14,7 +14,7 @@ const $button = $('button');
 
 $button.addEventListener('click', () => {
     const count = +$count.innerHTML;
-    $count.innerHTML = (count + 1).toString;
+    $count.innerHTML = (count + 1).toString();
 })
 
 // recibe el evento updateTheme y actualiza el estilo
