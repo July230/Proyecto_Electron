@@ -23,6 +23,20 @@ const createWindow = () => {
     setMainMenu(mainWindow)
 }
 
+// crear una ventana
+const aboutWindow = () => {
+  const aboutWindow = new BrowserWindow({
+    title: 'Acerca del redimensionador',
+    width: 300,
+    height: 600,
+  })
+
+  aboutWindow.loadFile('./views/about.html')
+
+  // al crear la ventana 
+  setMainMenu(mainWindow)
+}
+
   // cargar una pagina
     // es posible crear mas de un proceso
 app.whenReady().then(() => {
