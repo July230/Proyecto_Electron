@@ -68,3 +68,12 @@ Estamos familiarizados con esto, tendremos la carpeta `node_modules`, al igual q
 Recordemos que es una buena práctica el tener un repositorio En un proyecto de git donde nuestro repositorio también es remoto en GitHub, no olvidemos agregar un archivo .gitignore. Si no estás haciendo un repositorio de git, facilita el mantenimiento del código, nos permite tener un control de versiones, asilamos el flujo de trabajo, entre otros.
 
 ## Iniciando una aplicación de Electron
+
+El script principal que definamos en package.json es el punto de entrada de cualquier aplicación Electron. Este script controla el proceso principal, que se ejecuta en un entorno Node.js y es responsable de controlar el ciclo de vida de la aplicación, mostrar interfaces nativas, realizar operaciones privilegiadas y administrar los procesos de renderizado.
+
+Antes de crear nuestra aplicación Electron, usaremos un script sencillo para asegurarte de que el punto de entrada del proceso principal esté configurado correctamente. Creamos un archivo main.js en la carpeta raíz del proyecto con una sola línea de código:
+
+
+```
+console.log('Hola mundo desde Electron')
+```
