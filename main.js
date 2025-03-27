@@ -17,7 +17,7 @@ const createWindow = () => {
       }
     })
   
-    mainWindow.loadFile('index.html')
+    mainWindow.loadFile('./views/index.html')
 
     // al crear la ventana 
     setMainMenu(mainWindow)
