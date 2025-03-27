@@ -73,7 +73,34 @@ El script principal que definamos en package.json es el punto de entrada de cual
 
 Antes de crear nuestra aplicación Electron, usaremos un script sencillo para asegurarte de que el punto de entrada del proceso principal esté configurado correctamente. Creamos un archivo main.js en la carpeta raíz del proyecto con una sola línea de código:
 
-
 ```
 console.log('Hola mundo desde Electron')
 ```
+
+El proceso principal de Electron es un entorno de ejecución de Node.js, podemos ejecutar código Node.js arbitrario con el comando electron. Para ejecutar este script, vamos a añadir `electron .` al comando de inicio en el campo scripts de tu package.json. Este comando indicará al ejecutable de Electron que busque el script principal en el directorio actual y lo ejecute en modo de desarrollo.
+
+```
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "Hello World!",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jane Doe",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "23.1.3"
+  }
+}
+```
+
+Y ejecutamos el siguiente comando dentro de nuestro proyecto
+
+```
+npm run start
+```
+
+La terminal imprime `Hola mundo desde Electron`.
