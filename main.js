@@ -1,7 +1,6 @@
 const { app, BrowserWindow} = require('electron');
 // app, controla el ciclo de vida de la aplicacion
 // BrowserWindow, crea y administra ventanas de la app
-/*
 const { setMainMenu } = require('./menu');
 const path = require('path')
 
@@ -36,6 +35,7 @@ app.whenReady().then(() => {
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
+        */
 
 }).catch((error) => console.log(error));
 
@@ -58,16 +58,3 @@ app.on('window-all-closed', () => {
     }
 })
 */
-
-const createWindow = () => {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600
-  })
-
-  win.loadFile('index.html')
-}
-
-app.whenReady().then(() => {
-  createWindow()
-})

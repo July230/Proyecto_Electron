@@ -24,7 +24,7 @@ El desarrollo en Electron es similar al desarrollo web, por lo que la curva de a
 
 ---
 
-## Preparando el proyecto
+## Preparando el proyecto - Iniciando en electron
 
 ### Iniciar el proyecto npm
 
@@ -160,3 +160,38 @@ Muchos de los módulos principales de Electron son emisores de eventos de Node.j
 BrowserWindows solo se puede crear después de que se active el evento "ready" del módulo app. Podemos esperar este evento usando la API app.whenReady() y llamando a createWindow() una vez que se cumpla su promesa.
 
 Cuando iniciemos la app, veremos que aparece el logo de electron. Esto en sí no hace nada, pero es importante saber que aparecerá cada vez que iniciemos.
+
+En este punto, al ejecutar el comando de inicio de tu aplicación Electron, debería abrirse correctamente una ventana que muestre tu página web.
+
+Cada página web nuestra aplicación muestre en una ventana se ejecutará en un proceso independiente llamado proceso de renderizado (o simplemente renderer). Los procesos de renderizado tienen acceso a las mismas API y herramientas de JavaScript que utilizamos para el desarrollo web frontend típico.
+
+## Manejando el ciclo de vida de las ventanas
+
+Las ventanas de aplicación se comportan de forma diferente en cada OS Electron nos permite implementarlas en el código de la aplicación si deseamos seguirlas. Podemos implementar convenciones básicas de ventana escuchando los eventos emitidos por la aplicación y los módulos BrowserWindow.
+
+## Salir de la aplicación cuando todas las ventanas estén cerradas (Windows y Linux)
+
+En Windows y Linux, cerrar todas las ventanas generalmente cierra la aplicación por completo. Para implementar este patrón la aplicación Electron, detecta el evento "window-all-closed" del módulo de la aplicación y llama a app.quit() para salir de la aplicación si el usuario no está en macOS.
+
+```
+const createWindow = () => {
+    const mainWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+    })
+  
+    mainWindow.loadFile('index.html')
+
+    setMainMenu(mainWindow)
+}
+
+app.whenReady().then(() => {
+    createWindow()
+
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
+})
+
+
+```
