@@ -13,4 +13,6 @@ function createAboutWindow() {
     aboutWindow.loadFile('./views/about.html');
 }
 
-module.exports = { createAboutWindow };
+module.exports = { 
+    createAboutWindow 
+};
