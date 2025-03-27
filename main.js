@@ -1,6 +1,7 @@
 const { app, BrowserWindow} = require('electron');
 // app, controla el ciclo de vida de la aplicacion
 // BrowserWindow, crea y administra ventanas de la app
+/*
 const { setMainMenu } = require('./menu');
 const path = require('path')
 
@@ -31,6 +32,7 @@ app.whenReady().then(() => {
     // macOS apps generally continue running even without any windows open. 
     // Because windows cannot be created before the ready event, 
     // you should only listen for activate events after your app is initialized.
+    /*
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
@@ -56,3 +58,16 @@ app.on('window-all-closed', () => {
     }
 })
 */
+
+const createWindow = () => {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600
+  })
+
+  win.loadFile('index.html')
+}
+
+app.whenReady().then(() => {
+  createWindow()
+})

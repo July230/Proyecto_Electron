@@ -104,3 +104,59 @@ npm run start
 ```
 
 La terminal imprime `Hola mundo desde Electron`.
+
+## Cargando una página web en una ventana del navegador
+
+Cada ventana muestra una página web que puede cargarse desde un archivo HTML local o desde una dirección web remota. Aquí lo cargaremos desde un archivo local. Comancemos creando una página web básica en un archivo index.html en la carpeta raíz del proyecto:
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Hola mundo desde Electron renderer!</title>
+  </head>
+  <body>
+    <h1>Hola mundo desde Electron renderer!</h1>
+  </body>
+</html>
+```
+
+Ahora que tenemos una página web, podemos cargarla en una ventana del navegador de Electron. En el archivo main haremos lo siguiente.
+
+```
+const { app, BrowserWindow } = require('electron')
+
+<!-- carga su página web en una nueva instancia de BrowserWindow -->
+const createWindow = () => {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600
+  })
+
+  win.loadFile('index.html')
+}
+
+<!-- Llamar a su función cuando la aplicación esté lista -->
+app.whenReady().then(() => {
+  createWindow()
+})
+```
+
+- **app**: Controla el ciclo de vida de la aplicacion.
+- **BrowserWindow**: Crea y administra ventanas de la app.
+
+Muchos de los módulos principales de Electron son emisores de eventos de Node.js que se adhieren a la arquitectura asincrónica basada en eventos de Node. El módulo app es uno de estos emisores.
+
+BrowserWindows solo se puede crear después de que se active el evento "ready" del módulo app. Podemos esperar este evento usando la API app.whenReady() y llamando a createWindow() una vez que se cumpla su promesa.
+
+Cuando iniciemos la app, veremos que aparece el logo de electron. Esto en sí no hace nada, pero es importante saber que aparecerá cada vez que iniciemos.
