@@ -1,7 +1,7 @@
 const { app, BrowserWindow} = require('electron');
 // app, controla el ciclo de vida de la aplicacion
 // BrowserWindow, crea y administra ventanas de la app
-const { setupRoutes } = require('./routes/routes');
+const { setupRoutes } = require('../Backend/routes/routes');
 
   // cargar una pagina
     // es posible crear mas de un proceso

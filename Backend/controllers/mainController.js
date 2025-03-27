@@ -1,6 +1,6 @@
 const { BrowserWindow } = require('electron')
 const path = require('path')
-const { setMainMenu } = require('../public/js/menu'); 
+const { setMainMenu } = require('../../Frontend/public/js/menu'); 
 
 // crear una ventana
 const createMainWindow = () => {
