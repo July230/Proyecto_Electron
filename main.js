@@ -1,7 +1,7 @@
 const { app, BrowserWindow} = require('electron');
 // app, controla el ciclo de vida de la aplicacion
 // BrowserWindow, crea y administra ventanas de la app
-const { setMainMenu } = require('./menu');
+const { setMainMenu } = require('./utils/js/menu');
 const path = require('path')
 
 console.log('Hola mundo desde electron');
