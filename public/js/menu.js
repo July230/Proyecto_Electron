@@ -49,7 +49,6 @@ const setMainMenu = (mainWindow) => {
                             console.log(err)
                           })
                     }
-
                 }
             ]
         },

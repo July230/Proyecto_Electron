@@ -24,7 +24,7 @@ const createWindow = () => {
 }
 
 // crear una ventana
-const aboutWindow = () => {
+const createAboutWindow = () => {
   const aboutWindow = new BrowserWindow({
     title: 'Acerca del redimensionador',
     width: 300,
@@ -32,9 +32,6 @@ const aboutWindow = () => {
   })
 
   aboutWindow.loadFile('./views/about.html')
-
-  // al crear la ventana 
-  setMainMenu(mainWindow)
 }
 
   // cargar una pagina
